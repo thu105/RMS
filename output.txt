@@ -1,0 +1,72 @@
+[root@localhost Project3]# make run
+sudo ./a.out 1
+Initializing variables...
+Normal case:
+	Each period has 5 milliseconds.
+	Thread 1 has a period of 1 and runs doWork() 1 times.
+	Thread 2 has a period of 2 and runs doWork() 2 times.
+	Thread 3 has a period of 4 and runs doWork() 4 times.
+	Thread 4 has a period of 16 and runs doWork() 16 times.
+Scheduler created. Affinity set to core 3. Priority set to 99.
+Worker 1  created. Affinity set to core 3. Priority set to 98.
+Worker 2  created. Affinity set to core 3. Priority set to 97.
+Worker 3  created. Affinity set to core 3. Priority set to 96.
+Worker 4  created. Affinity set to core 3. Priority set to 95.
+Simulation started.
+Simulation finished.
+########################################################
+			            T1  T2	T3	T4
+########################################################
+Tasks Started:  	160	80	40	10
+Tasks Finished: 	160	80	40	10
+Deadlines Missed:	0	  0	  0	  0
+########################################################
+Ending program...
+
+sudo ./a.out 2
+Initializing variables...
+T2 overrun case:
+	Each period has 5 milliseconds.
+	Thread 1 has a period of 1 and runs doWork() 1 times.
+	Thread 2 has a period of 2 and runs doWork() 50000 times.
+	Thread 3 has a period of 4 and runs doWork() 4 times.
+	Thread 4 has a period of 16 and runs doWork() 16 times.
+Scheduler created. Affinity set to core 3. Priority set to 99.
+Worker 1  created. Affinity set to core 3. Priority set to 98.
+Worker 2  created. Affinity set to core 3. Priority set to 97.
+Worker 3  created. Affinity set to core 3. Priority set to 96.
+Worker 4  created. Affinity set to core 3. Priority set to 95.
+Simulation started.
+Simulation finished.
+########################################################
+			            T1	T2	T3	T4
+########################################################
+Tasks Started:  	160	14	0	  0
+Tasks Finished: 	160	13	0	  0
+Deadlines Missed:	0	  80	40	10
+########################################################
+Ending program...
+
+sudo ./a.out 3
+Initializing variables...
+T3 overrun case:
+	Each period has 5 milliseconds.
+	Thread 1 has a period of 1 and runs doWork() 1 times.
+	Thread 2 has a period of 2 and runs doWork() 2 times.
+	Thread 3 has a period of 4 and runs doWork() 50000 times.
+	Thread 4 has a period of 16 and runs doWork() 16 times.
+Scheduler created. Affinity set to core 3. Priority set to 99.
+Worker 1  created. Affinity set to core 3. Priority set to 98.
+Worker 2  created. Affinity set to core 3. Priority set to 97.
+Worker 3  created. Affinity set to core 3. Priority set to 96.
+Worker 4  created. Affinity set to core 3. Priority set to 95.
+Simulation started.
+Simulation finished.
+########################################################
+			            T1	T2	T3	T4
+########################################################
+Tasks Started:  	160	80	15	0
+Tasks Finished: 	160	80	14	0
+Deadlines Missed:	0	  0 	40	10
+########################################################
+Ending program...
